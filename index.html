@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>अहमदनगर जिल्हा माध्यमिक शिक्षक संघ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1B3A6B;
+    --ink-deep:#142a4f;
+    --chalk:#FAF7F0;
+    --paper:#FFFDF8;
+    --brass:#D98E2B;
+    --maroon:#9B2226;
+    --charcoal:#2B2B2B;
+    --line:#d9cfb8;
+    --shadow: 0 8px 24px rgba(27,58,107,0.12);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--chalk);
+    color:var(--charcoal);
+    font-family:'Noto Sans Devanagari','Noto Sans',sans-serif;
+    line-height:1.65;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.serif{font-family:'Noto Serif Devanagari',serif;}
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1140px; margin:0 auto; padding:0 24px;}
+
+  /* Texture: faint paper grain */
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(27,58,107,0.025) 0px, rgba(27,58,107,0.025) 1px, transparent 1px, transparent 38px);
+    pointer-events:none;
+    z-index:0;
+  }
+
+  /* ===== Header / Letterhead hero ===== */
+  .letterhead{
+    position:relative;
+    background:var(--paper);
+    border-bottom:6px double var(--ink);
+    padding-top:18px;
+  }
+  .top-strip{
+    display:flex; justify-content:space-between;
+    font-size:0.78rem; letter-spacing:0.06em;
+    color:var(--maroon); font-weight:600;
+    padding:0 24px 10px;
+    max-width:1140px; margin:0 auto;
+    text-transform:none;
+  }
+  .top-strip span:nth-child(2){color:var(--ink);}
+  .top-strip span:nth-child(3){color:var(--brass);}
+
+  .masthead{
+    display:flex; align-items:center; gap:22px;
+    padding:6px 0 22px;
+    border-bottom:2px solid var(--line);
+    max-width:1140px; margin:0 auto; padding-left:24px; padding-right:24px;
+  }
+  .seal{
+    flex:0 0 auto;
+    width:78px; height:78px;
+    border-radius:50%;
+    border:3px solid var(--brass);
+    display:flex; align-items:center; justify-content:center;
+    background:radial-gradient(circle at 35% 30%, #fff7e8, #f3dcab 70%);
+    box-shadow:inset 0 0 0 2px var(--paper), 0 2px 6px rgba(0,0,0,0.15);
+    position:relative;
+  }
+  .seal svg{width:42px; height:42px;}
+  .masthead-text{flex:1;}
+  .masthead-text h1{
+    font-size:clamp(1.4rem, 3.2vw, 2.15rem);
+    color:var(--ink-deep);
+    font-weight:800;
+    letter-spacing:0.01em;
+  }
+  .masthead-text p{
+    font-size:0.92rem;
+    color:var(--charcoal);
+    opacity:0.75;
+    margin-top:4px;
+  }
+  .reg-tag{
+    font-size:0.76rem;
+    color:var(--maroon);
+    margin-top:6px;
+    font-weight:600;
+    letter-spacing:0.02em;
+  }
+
+  nav{
+    background:var(--ink);
+    position:sticky; top:0; z-index:50;
+    box-shadow:0 2px 10px rgba(0,0,0,0.15);
+  }
+  nav .wrap{
+    display:flex; justify-content:center; gap:6px;
+    flex-wrap:wrap;
+    padding:0 24px;
+  }
+  nav a{
+    color:#eef2fa;
+    font-size:0.92rem;
+    font-weight:600;
+    padding:13px 18px;
+    display:inline-block;
+    border-bottom:3px solid transparent;
+    transition:.2s;
+    letter-spacing:0.01em;
+  }
+  nav a:hover{ background:rgba(255,255,255,0.06); border-bottom-color:var(--brass); }
+
+  /* ===== Hero banner ===== */
+  .hero{
+    position:relative;
+    background:linear-gradient(160deg, var(--ink-deep) 0%, var(--ink) 55%, #2a4d85 100%);
+    color:var(--chalk);
+    padding:78px 0 90px;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";
+    position:absolute; right:-80px; top:-80px;
+    width:340px; height:340px; border-radius:50%;
+    background:radial-gradient(circle, rgba(217,142,43,0.18), transparent 70%);
+  }
+  .hero .wrap{position:relative; z-index:2;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:10px;
+    font-size:0.8rem; letter-spacing:0.12em; font-weight:600;
+    color:var(--brass);
+    margin-bottom:18px;
+  }
+  .eyebrow::before{content:"शि"; font-family:'Noto Serif Devanagari'; font-size:1.1rem; background:rgba(217,142,43,0.18); width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center;}
+  .hero h2{
+    font-size:clamp(1.9rem, 4.4vw, 3.2rem);
+    font-weight:700;
+    max-width:780px;
+    line-height:1.3;
+  }
+  .hero p.lead{
+    margin-top:20px;
+    font-size:1.08rem;
+    max-width:620px;
+    color:#dde6f5;
+  }
+  .hero-cta{display:flex; gap:14px; margin-top:32px; flex-wrap:wrap;}
+  .btn{
+    display:inline-block;
+    padding:13px 26px;
+    border-radius:3px;
+    font-weight:600;
+    font-size:0.95rem;
+    transition:.2s;
+  }
+  .btn-primary{background:var(--brass); color:var(--ink-deep);}
+  .btn-primary:hover{background:#c87f1f;}
+  .btn-ghost{border:1.5px solid rgba(255,255,255,0.5); color:#fff;}
+  .btn-ghost:hover{background:rgba(255,255,255,0.1);}
+
+  .stat-row{
+    display:grid; grid-template-columns:repeat(3,1fr);
+    margin-top:56px; border-top:1px solid rgba(255,255,255,0.18);
+    padding-top:28px; gap:24px;
+  }
+  .stat-row div{text-align:left;}
+  .stat-num{font-family:'Noto Serif Devanagari'; font-size:1.9rem; font-weight:700; color:var(--brass);}
+  .stat-label{font-size:0.84rem; color:#cdd9ec; margin-top:4px;}
+
+  /* ===== Section generic ===== */
+  section{padding:74px 0; position:relative; z-index:1;}
+  .section-head{
+    margin-bottom:42px;
+    max-width:680px;
+  }
+  .section-head .eyebrow-small{
+    font-size:0.78rem; letter-spacing:0.1em; font-weight:700;
+    color:var(--maroon); text-transform:uppercase;
+    margin-bottom:10px; display:block;
+  }
+  .section-head h3{
+    font-size:clamp(1.5rem,3vw,2.1rem);
+    color:var(--ink-deep);
+    font-weight:700;
+  }
+  .ledger-rule{
+    height:6px;
+    background:repeating-linear-gradient(90deg, var(--ink) 0 10px, transparent 10px 14px);
+    opacity:0.5;
+    margin:14px 0 0;
+    max-width:120px;
+  }
+
+  /* ===== About ===== */
+  .about-grid{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px; align-items:center;
+  }
+  .about-text p{margin-bottom:16px; font-size:1.02rem;}
+  .pillars{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:26px;}
+  .pillar{
+    background:var(--paper); border:1px solid var(--line); border-radius:6px;
+    padding:18px 18px; box-shadow:var(--shadow);
+  }
+  .pillar h4{font-size:1rem; color:var(--ink); margin-bottom:6px; font-weight:700;}
+  .pillar p{font-size:0.88rem; opacity:0.8; margin:0;}
+  .about-doc{
+    position:relative;
+    border:8px solid #fff;
+    box-shadow:0 14px 36px rgba(27,58,107,0.22);
+    transform:rotate(-1.5deg);
+    border-radius:2px;
+  }
+  .about-doc img{border-radius:1px;}
+  .about-doc::after{
+    content:"मूळ दस्तऐवज";
+    position:absolute; bottom:-14px; right:14px;
+    background:var(--maroon); color:#fff;
+    font-size:0.72rem; padding:5px 12px; border-radius:3px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.25);
+    transform:rotate(2deg);
+  }
+
+  /* ===== President spotlight ===== */
+  .president{
+    background:var(--ink-deep);
+    color:var(--chalk);
+  }
+  .president .wrap{
+    display:grid; grid-template-columns:280px 1fr; gap:48px; align-items:center;
+  }
+  .pres-photo-frame{
+    position:relative;
+    border:5px solid var(--brass);
+    border-radius:6px;
+    overflow:hidden;
+    box-shadow:0 20px 40px rgba(0,0,0,0.35);
+  }
+  .pres-photo-frame img{aspect-ratio:3/4; object-fit:cover;}
+  .pres-badge{
+    position:absolute; top:14px; left:-8px;
+    background:var(--maroon); color:#fff;
+    font-size:0.74rem; font-weight:700;
+    padding:6px 16px 6px 12px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.3);
+    letter-spacing:0.03em;
+  }
+  .pres-content .eyebrow-small{color:var(--brass);}
+  .pres-content h3{font-size:clamp(1.6rem,3.4vw,2.4rem); font-weight:700; margin-bottom:6px;}
+  .pres-role{font-size:1rem; color:var(--brass); font-weight:600; margin-bottom:18px;}
+  .pres-school{font-size:0.92rem; color:#cdd9ec; margin-bottom:18px;}
+  .pres-quote{
+    border-left:3px solid var(--brass);
+    padding-left:18px;
+    font-family:'Noto Serif Devanagari';
+    font-size:1.08rem; line-height:1.7;
+    color:#eef2fa;
+    font-weight:500;
+  }
+
+  /* ===== Team / Ledger ===== */
+  .team-table-wrap{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:8px;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+  }
+  .ledger-header-row{
+    display:grid; grid-template-columns:56px 1.4fr 1fr 1.6fr;
+    background:var(--ink); color:#fff;
+    font-size:0.8rem; font-weight:700; letter-spacing:0.04em;
+    padding:14px 20px;
+  }
+  .ledger-row{
+    display:grid; grid-template-columns:56px 1.4fr 1fr 1.6fr;
+    align-items:center;
+    padding:14px 20px;
+    border-bottom:1px solid var(--line);
+    font-size:0.92rem;
+    transition:.15s;
+  }
+  .ledger-row:last-child{border-bottom:none;}
+  .ledger-row:hover{background:#fbf3e3;}
+  .ledger-row .photo-cell img{
+    width:42px; height:42px; border-radius:50%; object-fit:cover;
+    border:2px solid var(--brass);
+  }
+  .ledger-row .name-cell{font-weight:700; color:var(--ink-deep);}
+  .ledger-row .role-cell{color:var(--maroon); font-weight:600; font-size:0.86rem;}
+  .ledger-row .school-cell{opacity:0.78; font-size:0.86rem;}
+
+  /* Portrait grid for those with photos */
+  .portrait-grid{
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(190px,1fr));
+    gap:22px; margin-top:38px;
+  }
+  .portrait-card{
+    background:var(--paper); border-radius:8px; overflow:hidden;
+    box-shadow:var(--shadow); border:1px solid var(--line);
+    text-align:center;
+    transition:.2s;
+  }
+  .portrait-card:hover{transform:translateY(-4px);}
+  .portrait-card .ph{
+    width:100%; aspect-ratio:1/1; overflow:hidden; background:#eee;
+  }
+  .portrait-card .ph img{width:100%; height:100%; object-fit:cover;}
+  .portrait-card .pc-body{padding:14px 12px 18px;}
+  .portrait-card .pc-name{font-weight:700; color:var(--ink-deep); font-size:0.98rem;}
+  .portrait-card .pc-role{color:var(--maroon); font-size:0.8rem; font-weight:600; margin-top:3px;}
+  .portrait-card .pc-place{font-size:0.78rem; opacity:0.65; margin-top:2px;}
+
+  /* ===== News / Gallery ===== */
+  .news-grid{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
+    gap:28px;
+  }
+  .news-card{
+    background:var(--paper); border-radius:8px; overflow:hidden;
+    box-shadow:var(--shadow); border:1px solid var(--line);
+    cursor:pointer;
+  }
+  .news-card .thumb{
+    width:100%; aspect-ratio:4/5; overflow:hidden; background:#eee;
+    position:relative;
+  }
+  .news-card .thumb img{width:100%; height:100%; object-fit:cover; transition:.3s;}
+  .news-card:hover .thumb img{transform:scale(1.04);}
+  .news-card .tag{
+    position:absolute; top:10px; left:10px;
+    background:var(--maroon); color:#fff; font-size:0.7rem; font-weight:700;
+    padding:4px 10px; border-radius:3px; letter-spacing:0.03em;
+  }
+  .news-card .nc-body{padding:16px 18px 20px;}
+  .news-card h4{font-size:1.02rem; color:var(--ink-deep); font-weight:700; margin-bottom:6px; line-height:1.4;}
+  .news-card p{font-size:0.86rem; opacity:0.78;}
+
+  .lightbox{
+    position:fixed; inset:0; background:rgba(20,30,50,0.92);
+    display:none; align-items:center; justify-content:center;
+    z-index:200; padding:30px;
+  }
+  .lightbox.active{display:flex;}
+  .lightbox img{max-height:88vh; max-width:90vw; border-radius:4px; box-shadow:0 20px 60px rgba(0,0,0,0.5);}
+  .lightbox-close{
+    position:absolute; top:24px; right:30px;
+    color:#fff; font-size:2rem; cursor:pointer; line-height:1;
+    width:44px; height:44px; display:flex; align-items:center; justify-content:center;
+    border-radius:50%; background:rgba(255,255,255,0.1);
+  }
+
+  /* ===== Contact ===== */
+  .contact{
+    background:linear-gradient(160deg, var(--ink-deep), var(--ink));
+    color:var(--chalk);
+  }
+  .contact .section-head h3{color:#fff;}
+  .contact .section-head .eyebrow-small{color:var(--brass);}
+  .contact-grid{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px;
+  }
+  .contact-card{
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:10px;
+    padding:30px;
+  }
+  .contact-row{display:flex; gap:14px; margin-bottom:20px; align-items:flex-start;}
+  .contact-row:last-child{margin-bottom:0;}
+  .ic{
+    flex:0 0 auto; width:38px; height:38px; border-radius:50%;
+    background:rgba(217,142,43,0.2); color:var(--brass);
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.1rem; font-weight:700;
+  }
+  .contact-row h5{font-size:0.92rem; color:var(--brass); font-weight:700; margin-bottom:3px;}
+  .contact-row p, .contact-row a{font-size:0.94rem; color:#e3e9f5;}
+  .office-list{font-size:0.88rem; color:#cdd9ec; line-height:1.9;}
+  .office-list strong{color:#fff;}
+
+  footer{
+    background:var(--ink-deep); color:#9fb2d6;
+    text-align:center; padding:26px 0;
+    font-size:0.84rem;
+    border-top:4px double var(--brass);
+  }
+  footer strong{color:#fff;}
+
+  /* Responsive */
+  @media (max-width: 880px){
+    .about-grid, .contact-grid{grid-template-columns:1fr;}
+    .president .wrap{grid-template-columns:1fr; text-align:center;}
+    .pres-photo-frame{max-width:240px; margin:0 auto;}
+    .pres-quote{text-align:left;}
+    .stat-row{grid-template-columns:1fr; gap:14px;}
+    .ledger-header-row, .ledger-row{grid-template-columns:46px 1fr 1fr; font-size:0.85rem;}
+    .ledger-header-row span:nth-child(4), .ledger-row .school-cell{display:none;}
+    nav .wrap{gap:0;}
+    nav a{padding:11px 12px; font-size:0.85rem;}
+    .masthead{flex-direction:column; text-align:center;}
+    .top-strip{flex-direction:column; gap:3px; text-align:center;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important; animation:none !important;}
+  }
+
+  /* Focus visibility */
+  a:focus-visible, .news-card:focus-visible{outline:3px solid var(--brass); outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<!-- ===== LETTERHEAD HEADER ===== -->
+<header class="letterhead">
+  <div class="top-strip">
+    <span>शिक्षण!</span>
+    <span>सहकार!!</span>
+    <span>संघटना!!!</span>
+  </div>
+  <div class="masthead">
+    <div class="seal" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2L13.5 7.5L19 6L16.5 11L22 13L16.5 15L19 20L13.5 18.5L12 24L10.5 18.5L5 20L7.5 15L2 13L7.5 11L5 6L10.5 7.5L12 2Z" fill="#1B3A6B" opacity="0.85"/>
+      </svg>
+    </div>
+    <div class="masthead-text">
+      <h1>अहमदनगर जिल्हा माध्यमिक शिक्षक संघ</h1>
+      <p>महाराष्ट्र माध्यमिक शिक्षक संघ संलग्न, अहमदनगर</p>
+      <p class="reg-tag">नोंदणी क्रमांक — ३३५५ / अहमदनगर</p>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <div class="wrap">
+    <a href="#home">मुख्यपृष्ठ</a>
+    <a href="#about">संघटनेबद्दल</a>
+    <a href="#president">अध्यक्ष</a>
+    <a href="#team">पदाधिकारी</a>
+    <a href="#news">बातम्या / गॅलरी</a>
+    <a href="#contact">संपर्क</a>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="home">
+  <div class="wrap">
+    <span class="eyebrow">माध्यमिक शिक्षकांचा आवाज</span>
+    <h2>शिक्षक हितासाठी, शैक्षणिक न्यायासाठी — एकजुटीने उभी असलेली संघटना</h2>
+    <p class="lead">अहमदनगर जिल्हा माध्यमिक शिक्षक संघ ही जिल्ह्यातील माध्यमिक शिक्षकांच्या हक्कांसाठी, सेवाशर्तींसाठी आणि शैक्षणिक गुणवत्तेसाठी काम करणारी अधिकृत नोंदणीकृत संघटना आहे.</p>
+    <div class="hero-cta">
+      <a href="#president" class="btn btn-primary">अध्यक्षांची ओळख</a>
+      <a href="#news" class="btn btn-ghost">बातम्या पहा</a>
+    </div>
+    <div class="stat-row">
+      <div>
+        <div class="stat-num">३३५५</div>
+        <div class="stat-label">नोंदणी क्रमांक, अहमदनगर</div>
+      </div>
+      <div>
+        <div class="stat-num">१५+</div>
+        <div class="stat-label">कार्यकारिणी पदाधिकारी</div>
+      </div>
+      <div>
+        <div class="stat-num">जिल्हाभर</div>
+        <div class="stat-label">शिक्षक सहभाग व पाठिंबा</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow-small">ओळख</span>
+      <h3>संघटनेबद्दल</h3>
+      <div class="ledger-rule"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>अहमदनगर जिल्हा माध्यमिक शिक्षक संघ ही महाराष्ट्र माध्यमिक शिक्षक संघाशी संलग्न असलेली, जिल्ह्यातील माध्यमिक शिक्षकांचे प्रतिनिधित्व करणारी अधिकृत नोंदणीकृत संघटना आहे. शिक्षकांच्या सेवाशर्ती, वेतन व निवृत्तीवेतन योजना, संच मान्यता तसेच शैक्षणिक क्षेत्रातील विविध प्रश्नांसाठी संघटना सातत्याने संघर्ष करत आली आहे.</p>
+        <p>ज्येष्ठ मार्गदर्शक व नवीन कार्यकारिणी यांच्या समन्वयातून संघटनेची वैचारिक बांधणी अधिक मजबूत करत, शिक्षणातील सर्व घटकांच्या समस्या सोडवण्यावर भर देणे, हे संघटनेचे मुख्य उद्दिष्ट आहे.</p>
+        <div class="pillars">
+          <div class="pillar">
+            <h4>हक्कांसाठी लढा</h4>
+            <p>सेवाशर्ती, वेतन व पेन्शन योजनेसंबंधी शिक्षकांच्या मागण्यांसाठी सातत्याने पाठपुरावा.</p>
+          </div>
+          <div class="pillar">
+            <h4>शैक्षणिक गुणवत्ता</h4>
+            <p>माध्यमिक शिक्षणाचा दर्जा उंचावण्यासाठी विविध उपक्रम व सहकार्य.</p>
+          </div>
+          <div class="pillar">
+            <h4>एकजूट संघटन</h4>
+            <p>जिल्ह्यातील सर्व माध्यमिक शिक्षकांना एका व्यासपीठावर एकत्र आणण्याचे काम.</p>
+          </div>
+          <div class="pillar">
+            <h4>संवाद व समन्वय</h4>
+            <p>शासन, शिक्षण विभाग व शिक्षक यांच्यातील दुवा म्हणून प्रभावी भूमिका.</p>
+          </div>
+        </div>
+      </div>
+      <div class="about-doc">
+        <img src="images/letterhead.jpeg" alt="संघटनेचे अधिकृत पत्र / letterhead" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRESIDENT SPOTLIGHT ===== -->
+<section class="president" id="president">
+  <div class="wrap">
+    <div class="pres-photo-frame">
+      <span class="pres-badge">अध्यक्ष</span>
+      <img src="images/adhyaksha-sachin-zagade.jpeg" alt="सचिन रमेश झगडे, अध्यक्ष" loading="lazy">
+    </div>
+    <div class="pres-content">
+      <span class="eyebrow-small">जिल्हाध्यक्ष</span>
+      <h3>सचिन रमेश झगडे</h3>
+      <div class="pres-role">M.A., B.Ed., M.Com, SET, Ph.D. (अभ्यासरत) — अध्यक्ष</div>
+      <div class="pres-school">महादजी शिंदे विद्यालय व ज्युनिअर कॉलेज ऑफ सायन्स, श्रीगोंदा</div>
+      <p class="pres-quote">"ज्येष्ठ मार्गदर्शक व नवीन कार्यकारिणी यांच्या समन्वयातून संघटनेची वैचारिक बांधणी अधिक मजबूत करत, शैक्षणिक व्यवस्थेतील सर्व घटकांच्या समस्या सोडवण्यावर भर देणार."</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TEAM / LEDGER ===== -->
+<section id="team">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow-small">कार्यकारिणी</span>
+      <h3>पदाधिकारी मंडळ</h3>
+      <div class="ledger-rule"></div>
+    </div>
+
+    <!-- Photo-available portraits first -->
+    <div class="portrait-grid">
+      <div class="portrait-card">
+        <div class="ph"><img src="images/sachiv-amol-thange.jpeg" alt="अमोल धोंडिबा ठाणगे" loading="lazy"></div>
+        <div class="pc-body">
+          <div class="pc-name">अमोल धोंडिबा ठाणगे</div>
+          <div class="pc-role">सचिव</div>
+          <div class="pc-place">श्री दुर्गादेवी मा. उ. मा. विद्यालय, बावबुरी, ता. पारनेर</div>
+        </div>
+      </div>
+      <div class="portrait-card">
+        <div class="ph"><img src="images/somnath-sunbe.jpeg" alt="सोमनाथ सुंबे" loading="lazy"></div>
+        <div class="pc-body">
+          <div class="pc-name">सोमनाथ सुंबे</div>
+          <div class="pc-role">उपाध्यक्ष</div>
+          <div class="pc-place">ज्ञानसरिता विद्यालय, वडगाव गुप्ता, ता. नगर</div>
+        </div>
+      </div>
+      <div class="portrait-card">
+        <div class="ph"><img src="images/sachin-fatangre.jpeg" alt="सचिन फटांगरे" loading="lazy"></div>
+        <div class="pc-body">
+          <div class="pc-name">सचिन फटांगरे</div>
+          <div class="pc-role">उपाध्यक्ष</div>
+          <div class="pc-place">नाथबाबा विद्यालय, बोटा, ता. संगमनेर</div>
+        </div>
+      </div>
+      <div class="portrait-card">
+        <div class="ph"><img src="images/ravsaheb-shelke.jpeg" alt="रावसाहेब शेळके" loading="lazy"></div>
+        <div class="pc-body">
+          <div class="pc-name">रावसाहेब शेळके</div>
+          <div class="pc-role">सहसचिव</div>
+          <div class="pc-place">श्री. संत ज्ञानेश्वर विद्यालय, ढोकरी, ता. अकोले</div>
+        </div>
+      </div>
+      <div class="portrait-card">
+        <div class="ph"><img src="images/sachin-jadhav.jpeg" alt="सचिन जाधव" loading="lazy"></div>
+        <div class="pc-body">
+          <div class="pc-name">सचिन जाधव</div>
+          <div class="pc-role">कार्यकारिणी सदस्य</div>
+          <div class="pc-place">श्री. चांगदेव बारकू पा. कोळपे मा. विद्यालय, सुरेगाव, ता. कोपरगाव</div>
+        </div>
+      </div>
+      <div class="portrait-card">
+        <div class="ph"><img src="images/santosh-adkitte.jpeg" alt="संतोष आडकित्ते" loading="lazy"></div>
+        <div class="pc-body">
+          <div class="pc-name">संतोष आडकित्ते</div>
+          <div class="pc-role">हिशोब तपासणीस</div>
+          <div class="pc-place">नवजीवन विद्यालय, दहिगाव ने, ता. शेवगाव</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Full ledger table for everyone, including those without separate photos -->
+    <div style="margin-top:46px;">
+      <h4 class="serif" style="font-size:1.15rem; color:var(--ink-deep); margin-bottom:16px;">संपूर्ण कार्यकारिणी सूची</h4>
+      <div class="team-table-wrap">
+        <div class="ledger-header-row">
+          <span></span><span>नाव</span><span>पदभार</span><span>शाळा / तालुका</span>
+        </div>
+        <div class="ledger-row">
+          <span class="photo-cell"><img src="images/adhyaksha-sachin-zagade.jpeg" alt=""></span>
+          <span class="name-cell">सचिन रमेश झगडे</span>
+          <span class="role-cell">अध्यक्ष</span>
+          <span class="school-cell">महादजी शिंदे विद्यालय, श्रीगोंदा</span>
+        </div>
+        <div class="ledger-row">
+          <span class="photo-cell"><img src="images/sachiv-amol-thange.jpeg" alt=""></span>
+          <span class="name-cell">अमोल धोंडिबा ठाणगे</span>
+          <span class="role-cell">सचिव</span>
+          <span class="school-cell">श्री दुर्गादेवी विद्यालय, बावबुरी, पारनेर</span>
+        </div>
+        <div class="ledger-row">
+          <span class="photo-cell"><img src="images/somnath-sunbe.jpeg" alt=""></span>
+          <span class="name-cell">सोमनाथ सुंबे</span>
+          <span class="role-cell">उपाध्यक्ष</span>
+          <span class="school-cell">ज्ञानसरिता विद्यालय, वडगाव गुप्ता, नगर</span>
+        </div>
+        <div class="ledger-row">
+          <span class="photo-cell"><img src="images/sachin-fatangre.jpeg" alt=""></span>
+          <span class="name-cell">सचिन फटांगरे</span>
+          <span class="role-cell">उपाध्यक्ष</span>
+          <span class="school-cell">नाथबाबा विद्यालय, बोटा, संगमनेर</span>
+        </div>
+        <div class="ledger-row">
+          <span class="photo-cell"><img src="images/ravsaheb-shelke.jpeg" alt=""></span>
+          <span class="name-cell">रावसाहेब शेळके</span>
+          <span class="role-cell">सहसचिव</span>
+          <span class="school-cell">संत ज्ञानेश्वर विद्यालय, ढोकरी, अकोले</span>
+        </div>
+        <div class="ledger-row">
+          <span class="photo-cell"><img src="images/sachin-jadhav.jpeg" alt=""></span>
+          <span class="name-cell">सचिन जाधव</span>
+          <span class="role-cell">कार्यकारिणी सदस्य</span>
+          <span class="school-cell">चांगदेव बारकू पा. कोळपे विद्यालय, कोपरगाव</span>
+        </div>
+        <div class="ledger-row">
+          <span class="photo-cell"><img src="images/santosh-adkitte.jpeg" alt=""></span>
+          <span class="name-cell">संतोष आडकित्ते</span>
+          <span class="role-cell">हिशोब तपासणीस</span>
+          <span class="school-cell">नवजीवन विद्यालय, दहिगाव ने, शेवगाव</span>
+        </div>
+        <div class="ledger-row">
+          <span class="photo-cell" style="opacity:.25;">—</span>
+          <span class="name-cell">अशोक सोनवणे</span>
+          <span class="role-cell">खजिनदार</span>
+          <span class="school-cell">संत एकनाथ महाराज विद्यालय, लोहगाव, नेवासा</span>
+        </div>
+        <div class="ledger-row">
+          <span class="photo-cell" style="opacity:.25;">—</span>
+          <span class="name-cell">भालचंद्र देशमुख</span>
+          <span class="role-cell">उपाध्यक्ष</span>
+          <span class="school-cell">महात्मा गांधी विद्यालय, कर्जत</span>
+        </div>
+        <div class="ledger-row">
+          <span class="photo-cell" style="opacity:.25;">—</span>
+          <span class="name-cell">प्रसाद शिंदे</span>
+          <span class="role-cell">उपाध्यक्ष</span>
+          <span class="school-cell">केशवगोविंद विद्यालय, बेलापूर खुर्द, श्रीरामपूर</span>
+        </div>
+        <div class="ledger-row">
+          <span class="photo-cell" style="opacity:.25;">—</span>
+          <span class="name-cell">राज जाधव</span>
+          <span class="role-cell">सहसचिव</span>
+          <span class="school-cell">प्रगती विद्यालय, राहुरी</span>
+        </div>
+        <div class="ledger-row">
+          <span class="photo-cell" style="opacity:.25;">—</span>
+          <span class="name-cell">देविदास पालवे</span>
+          <span class="role-cell">सहसचिव</span>
+          <span class="school-cell">श्री आनंद विद्यालय, चिंचोडी शिराळ, पाथर्डी</span>
+        </div>
+        <div class="ledger-row">
+          <span class="photo-cell" style="opacity:.25;">—</span>
+          <span class="name-cell">मोहन यादव</span>
+          <span class="role-cell">सहसचिव</span>
+          <span class="school-cell">कन्या विद्यालय, जामखेड</span>
+        </div>
+        <div class="ledger-row">
+          <span class="photo-cell" style="opacity:.25;">—</span>
+          <span class="name-cell">शिवदास सातपुते</span>
+          <span class="role-cell">हिशोब तपासणीस</span>
+          <span class="school-cell">न्यू इंग्लिश स्कूल, कोऱ्हाळे, राहाता</span>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top:18px; font-size:0.82rem; opacity:0.65;">* सूची संघटनेच्या अधिकृत पत्रानुसार (पत्र क्र. ०१७/२५-२६) तयार करण्यात आली आहे.</p>
+  </div>
+</section>
+
+<!-- ===== NEWS / GALLERY ===== -->
+<section id="news" style="background:var(--paper);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow-small">वार्तापत्र</span>
+      <h3>बातम्या व छायाचित्र दालन</h3>
+      <div class="ledger-rule"></div>
+    </div>
+    <div class="news-grid">
+
+      <div class="news-card" tabindex="0" onclick="openLightbox('images/news-lokmat.jpeg')">
+        <div class="thumb">
+          <span class="tag">लोकमत</span>
+          <img src="images/news-lokmat.jpeg" alt="लोकमत बातमी - अध्यक्षपदी सचिन झगडे" loading="lazy">
+        </div>
+        <div class="nc-body">
+          <h4>अध्यक्षपदी सचिन झगडे, सचिवपदी अमोल ठाणगे</h4>
+          <p>नवीन कार्यकारिणीची घोषणा व वार्षिक सर्वसाधारण सभेचे वृत्त — लोकमत, अहमदनगर.</p>
+        </div>
+      </div>
+
+      <div class="news-card" tabindex="0" onclick="openLightbox('images/news-pudhari.jpeg')">
+        <div class="thumb">
+          <span class="tag">पुढारी</span>
+          <img src="images/news-pudhari.jpeg" alt="पुढारी बातमी - माध्यमिक शिक्षक संघटना अध्यक्षपदी झगडे" loading="lazy">
+        </div>
+        <div class="nc-body">
+          <h4>संघटनेच्या समन्वय बैठकीचे वृत्त</h4>
+          <p>ज्येष्ठ मार्गदर्शक व नवीन कार्यकारिणी यांच्या उपस्थितीत वार्षिक सभा संपन्न — दैनिक पुढारी.</p>
+        </div>
+      </div>
+
+      <div class="news-card" tabindex="0" onclick="openLightbox('images/news-samp-ishara.jpeg')">
+        <div class="thumb">
+          <span class="tag">आंदोलन</span>
+          <img src="images/news-samp-ishara.jpeg" alt="प्रलंबित मागण्यांसाठी शिक्षक आक्रमक" loading="lazy">
+        </div>
+        <div class="nc-body">
+          <h4>प्रलंबित मागण्यांसाठी शिक्षक आक्रमक</h4>
+          <p>सरकारकडून भेद निर्माण करण्याचा आरोप — बेमुदत संपाचा इशारा देण्यात आला.</p>
+        </div>
+      </div>
+
+      <div class="news-card" tabindex="0" onclick="openLightbox('images/letterhead.jpeg')">
+        <div class="thumb">
+          <span class="tag">परिपत्रक</span>
+          <img src="images/letterhead.jpeg" alt="संघटनेचे अधिकृत परिपत्रक" loading="lazy">
+        </div>
+        <div class="nc-body">
+          <h4>जनगणना प्रशिक्षणाबाबत अधिकृत पत्र</h4>
+          <p>शिक्षक-शिक्षकेतर कर्मचाऱ्यांच्या प्रशिक्षण वेळापत्रकाबाबत संघटनेचे निवेदन.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="if(event.target===this) closeLightbox()">
+  <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+  <img id="lightbox-img" src="" alt="विस्तारित छायाचित्र">
+</div>
+
+<!-- ===== CONTACT ===== -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow-small">संपर्क</span>
+      <h3>आमच्याशी संपर्क साधा</h3>
+      <div class="ledger-rule" style="background:repeating-linear-gradient(90deg, var(--brass) 0 10px, transparent 10px 14px);"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-row">
+          <div class="ic">अ</div>
+          <div>
+            <h5>अध्यक्ष</h5>
+            <p>सचिन रमेश झगडे — महादजी शिंदे विद्यालय व ज्युनिअर कॉलेज ऑफ सायन्स, श्रीगोंदा</p>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="ic">स</div>
+          <div>
+            <h5>सचिव</h5>
+            <p>अमोल धोंडिबा ठाणगे — श्री दुर्गादेवी मा. उ. मा. विद्यालय, बावबुरी, ता. पारनेर</p>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="ic">सं</div>
+          <div>
+            <h5>संघटना नोंदणी</h5>
+            <p>महाराष्ट्र माध्यमिक शिक्षक संघ संलग्न, नोंदणी क्र. ३३५५ / अहमदनगर</p>
+          </div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <h5 style="margin-bottom:14px;">इतर कार्यकारिणी संपर्क</h5>
+        <div class="office-list">
+          <strong>रावसाहेब शेळके</strong> — सहसचिव, अकोले<br>
+          <strong>सोमनाथ सुंबे</strong> — उपाध्यक्ष, नगर<br>
+          <strong>सचिन फटांगरे</strong> — उपाध्यक्ष, संगमनेर<br>
+          <strong>अशोक सोनवणे</strong> — खजिनदार, नेवासा<br>
+          <strong>संतोष आडकित्ते</strong> — हिशोब तपासणीस, शेवगाव
+        </div>
+        <p style="margin-top:18px; font-size:0.82rem; color:#a9bbdd;">* सविस्तर संपर्क क्रमांकांसाठी कृपया जिल्हा कार्यालयाशी संपर्क साधा.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>अहमदनगर जिल्हा माध्यमिक शिक्षक संघ</strong> &nbsp;•&nbsp; नोंदणी क्र. ३३५५/अहमदनगर</p>
+    <p style="margin-top:6px;">शिक्षण ! सहकार !! संघटना !!!</p>
+  </div>
+</footer>
+
+<script>
+function openLightbox(src){
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeLightbox(); });
+document.querySelectorAll('.news-card').forEach(card => {
+  card.addEventListener('keydown', e => {
+    if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); card.click(); }
+  });
+});
+</script>
+
+</body>
+</html>
